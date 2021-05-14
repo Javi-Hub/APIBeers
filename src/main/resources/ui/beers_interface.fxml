@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1163.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#export" text="Export" />
+                  <MenuItem mnemonicParsing="false" onAction="#zip" text="Zip" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="869.0" prefWidth="961.0">
+         <children>
+            <Label layoutX="554.0" layoutY="25.0" text="CERVEZAS" />
+            <ListView fx:id="lvData" layoutX="14.0" layoutY="520.0" prefHeight="240.0" prefWidth="708.0" />
+            <TableView fx:id="tvData" layoutX="14.0" layoutY="137.0" onMouseClicked="#getDetailTable" prefHeight="324.0" prefWidth="708.0" />
+            <Label layoutX="774.0" layoutY="316.0" text="Nombre" />
+            <Label layoutX="775.0" layoutY="355.0" text="Eslogan" />
+            <Label layoutX="774.0" layoutY="391.0" text="Fecha Fabricación" />
+            <Label fx:id="lbName" layoutX="966.0" layoutY="316.0" />
+            <Label fx:id="lbSlogan" layoutX="966.0" layoutY="355.0" />
+            <Label fx:id="lbDate" layoutX="966.0" layoutY="391.0" />
+            <Label layoutX="774.0" layoutY="427.0" text="Grados" />
+            <Label fx:id="lbDegree" layoutX="966.0" layoutY="427.0" />
+            <Separator layoutX="738.0" layoutY="10.0" orientation="VERTICAL" prefHeight="768.0" prefWidth="0.0" />
+            <WebView fx:id="wvImage" layoutX="821.0" layoutY="60.0" prefHeight="200.0" prefWidth="216.0" />
+            <Label layoutX="901.0" layoutY="25.0" text="DETALLE" />
+            <Button fx:id="btOrder" layoutX="172.0" layoutY="60.0" mnemonicParsing="false" onAction="#orderBy" prefHeight="25.0" prefWidth="51.0" text="Buscar" />
+            <ProgressIndicator fx:id="piProgress" layoutX="661.0" layoutY="65.0" progress="0.0" />
+            <TextField fx:id="tfMax" layoutX="129.0" layoutY="485.0" />
+            <ComboBox fx:id="cbCombo" layoutX="14.0" layoutY="60.0" prefWidth="150.0" />
+            <TextArea fx:id="taDescription" layoutX="758.0" layoutY="558.0" prefHeight="200.0" prefWidth="394.0" />
+            <TextField fx:id="tfMin" layoutX="291.0" layoutY="485.0" />
+            <Button layoutX="454.0" layoutY="485.0" mnemonicParsing="false" onAction="#filterMaxMin" prefHeight="25.0" prefWidth="128.0" text="Filtrar amargor" />
+            <Label layoutX="198.0" layoutY="461.0" text="MAX" />
+            <Label layoutX="361.0" layoutY="461.0" text="MIN" />
+            <TextField fx:id="tfSearch" layoutX="14.0" layoutY="93.0" />
+            <Button layoutX="172.0" layoutY="93.0" mnemonicParsing="false" onAction="#searchText" text="Buscar" />
+            <Label layoutX="777.0" layoutY="468.0" text="Cantidad" />
+            <Label fx:id="lbValue" layoutX="966.0" layoutY="473.0" />
+            <Label fx:id="lbUnit" layoutX="1030.0" layoutY="473.0" />
+            <TextField fx:id="tfPage" layoutX="268.0" layoutY="60.0" />
+            <Button layoutX="428.0" layoutY="60.0" mnemonicParsing="false" onAction="#page" text="Page" />
+            <Button layoutX="268.0" layoutY="93.0" mnemonicParsing="false" onAction="#previous" prefHeight="25.0" prefWidth="78.0" text="Previous" />
+            <Button layoutX="349.0" layoutY="93.0" mnemonicParsing="false" onAction="#next" prefHeight="25.0" prefWidth="70.0" text="Next" />
+            <ComboBox fx:id="cbComboYear" layoutX="479.0" layoutY="60.0" prefWidth="150.0" />
+            <Button fx:id="btSearchYear" layoutX="529.0" layoutY="93.0" mnemonicParsing="false" onAction="#searchYear" text="Buscar" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
