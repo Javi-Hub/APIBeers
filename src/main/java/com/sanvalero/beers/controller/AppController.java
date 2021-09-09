@@ -77,7 +77,7 @@ public class AppController implements Initializable {
         String selection = cbCombo.getValue();
         switch (selection){
             case "Cervezas":
-                loadComplete();
+                loadComplete(); /**Método que arranca de forma asíncrona el obtener los datos y el progressIndicator*/
             case "Grados":
                 CompletableFuture.runAsync(() -> {
                     orderByDegrees();
@@ -187,6 +187,7 @@ public class AppController implements Initializable {
 
     public void loadDataBeers(){
         listBeers.clear();
+        list.clear();
         tvData.setItems(listBeers);
         service.getBeers()
                 .flatMap(Observable::from)
@@ -208,12 +209,16 @@ public class AppController implements Initializable {
 
     public void loadDataBeersPage(int page){
         listBeers.clear();
+        list.clear();
         tvData.setItems(listBeers);
         service.getBeersPage(page)
                 .flatMap(Observable::from)
                 .doOnCompleted(() -> System.out.println("Loading Data Page"))
                 .doOnError(throwable -> System.out.println(throwable.getMessage()))
-                .subscribe(beer -> listBeers.add(beer));
+                .subscribe(beer -> {
+                    listBeers.add(beer);
+                    list.add(beer);
+                });
     }
 
     public void orderByDegrees(){
@@ -283,11 +288,11 @@ public class AppController implements Initializable {
     }
 
     public void searchBeers(String text){
-        /*tvData.setItems(list.stream()
+        tvData.setItems(list.stream()
                         .filter(beer -> beer.getName().equalsIgnoreCase(text))
-                        .collect(Collectors.toCollection(FXCollections::observableArrayList)));*/
+                        .collect(Collectors.toCollection(FXCollections::observableArrayList)));
 
-        listBeers.clear();
+        /*listBeers.clear();
 
         service.getBeers()
                 .flatMap(Observable::from)
@@ -297,7 +302,7 @@ public class AppController implements Initializable {
 
         tvData.setItems(listBeers.stream()
                 .filter(beer -> beer.getName().equalsIgnoreCase(text))
-                .collect(Collectors.toCollection(FXCollections::observableArrayList)));
+                .collect(Collectors.toCollection(FXCollections::observableArrayList)));*/
     }
 
     public String export(File file, List<Beer> list){
